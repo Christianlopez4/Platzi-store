@@ -18,6 +18,4 @@ import { HomeComponent } from './components/home/home.component';
     ]
 })
 
-export class HomeModule {
-
-}
+export class HomeModule {}
