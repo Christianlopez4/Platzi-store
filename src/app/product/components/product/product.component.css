@@ -1,0 +1,21 @@
+/*
+:host {
+    margin: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+*/
+img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    object-position: center;
+}
+
+.crop-image {
+    height: 300px;    
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+  

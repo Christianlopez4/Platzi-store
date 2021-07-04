@@ -1,31 +1,53 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
-import { ContactComponent } from './contact/contact.component';
-import { DemoComponent } from './demo/demo.component';
+import { LayoutComponent } from './layout/layout.component';
 
-const routes: Routes = [{
-  path: 'home',
-  component: HomeComponent
-},
+import { AdminGuard } from './admin.guard';
+
+const routes: Routes = [
 {
-  path: 'products',
-  component: ProductsComponent
+  path: '',
+  component: LayoutComponent,
+  children: [
+    {
+      path: '',
+      redirectTo: '/home',
+      pathMatch: 'full',
+    },
+    {
+      path: 'home',
+      loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    },
+    {
+      path: 'products',
+      loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+    },
+    {
+      path: 'contacts',
+      canActivate: [AdminGuard],
+      loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+    },
+    {
+      path: 'demo',
+      loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+    }
+  ]
 },
-{
-  path: 'contacts',
-  component: ContactComponent
-},
-{
-  path: 'demo',
-  component: DemoComponent
-}
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 
 })
