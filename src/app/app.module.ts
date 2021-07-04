@@ -7,18 +7,16 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
 
-import { DemoComponent } from './demo/demo.component';
-
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LayoutComponent } from './layout/layout.component';
 
 import { CoreModule } from './core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
-    DemoComponent,
     PageNotFoundComponent,
     LayoutComponent
   ],
@@ -27,7 +25,8 @@ import { CoreModule } from './core/core.module';
     FormsModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

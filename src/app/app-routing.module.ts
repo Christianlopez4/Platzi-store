@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LayoutComponent } from './layout/layout.component';
 
@@ -30,11 +29,11 @@ const routes: Routes = [
       canActivate: [AdminGuard],
       loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
     },
+    {
+      path: 'demo',
+      loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+    },
   ]
-},
-{
-  path: 'demo',
-  component: DemoComponent
 },
 {
   path: '**',
