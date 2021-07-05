@@ -1,1 +1,7 @@
-<p>footer works!</p>
+<p>Contacto</p>
+
+<mat-form-field appearance="legacy">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" [formControl]="emailField" placeholder="Digite su correo">
+</mat-form-field>
+<button mat-raised-button [disabled]="emailField.invalid" (click)="sendMail()">Enviar</button>

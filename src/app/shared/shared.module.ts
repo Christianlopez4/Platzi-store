@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 
 import { ExponentialPipe } from './pipes/exponential/exponential.pipe';
@@ -19,13 +20,15 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ], 
   exports: [
     ExponentialPipe,
     HighlightDirective,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
