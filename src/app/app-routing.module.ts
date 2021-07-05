@@ -25,7 +25,6 @@ const routes: Routes = [
     },
     {
       path: 'contacts',
-      canActivate: [AdminGuard],
       loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
     },
     {
@@ -40,12 +39,17 @@ const routes: Routes = [
 },
   {
     path: 'admin',
+    canActivate: [AdminGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
-  }
+  },
 ];
 
 @NgModule({
